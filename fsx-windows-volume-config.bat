@@ -546,6 +546,11 @@ if not defined D exit /b 1
 if not defined H exit /b 1
 if not defined M exit /b 1
 if defined EXTRA exit /b 1
+if not "%D:~1,1%"=="" exit /b 1
+if "%H:~1,1%"=="" exit /b 1
+if not "%H:~2,1%"=="" exit /b 1
+if "%M:~1,1%"=="" exit /b 1
+if not "%M:~2,1%"=="" exit /b 1
 call :validate_digits "%D%"
 if errorlevel 1 exit /b 1
 call :validate_digits "%H%"
@@ -564,7 +569,7 @@ set /a "M_NUM=%M_STR%"
 if %D_NUM% lss 1 exit /b 1
 if %D_NUM% gtr 7 exit /b 1
 if %H_NUM% gtr 23 exit /b 1
-if %M_NUM% gtr 59 exit /b 1
+if %M_NUM% gtr 60 exit /b 1
 set "PARSE_D=%D_NUM%"
 set "PARSE_H=%H_NUM%"
 set "PARSE_M=%M_NUM%"
@@ -589,6 +594,7 @@ echo   -backup-plushours ^<H^>           Offset backup by +H hours (UTC).
 echo   -backup-minushours ^<H^>          Offset backup by -H hours (UTC).
 echo   -maintenance ^<d:HH:MM^>          Weekly maintenance (UTC), d=1-7.
 echo                                     d=1 (Mon) ... d=7 (Sun).
+echo                                     HH must be 00-23, MM must be 00-60.
 echo   -maintenance-plushours ^<H^>      Offset maintenance by +H hours (UTC).
 echo   -maintenance-minushours ^<H^>     Offset maintenance by -H hours (UTC).
 echo   Offsets override explicit times when both are provided.

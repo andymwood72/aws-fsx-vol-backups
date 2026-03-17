@@ -24,7 +24,7 @@ Exactly one of `-id` or `-file` is required.
 - `-backup-plushours <H>`: offset backup by `+H` hours (UTC, 0-12).
 - `-backup-minushours <H>`: offset backup by `-H` hours (UTC, 0-12).
 - `-maintenance <d:HH:MM>`: weekly maintenance (UTC), `d=1-7` where
-  `1=Mon ... 7=Sun`.
+  `1=Mon ... 7=Sun`. `HH` must be `00-23` and `MM` must be `00-60`.
 - `-maintenance-plushours <H>`: offset maintenance by `+H` hours (UTC, 0-12).
 - `-maintenance-minushours <H>`: offset maintenance by `-H` hours (UTC, 0-12).
 - `-region <region>`: AWS region (or `AWS_REGION` env var).
