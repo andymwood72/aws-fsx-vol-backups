@@ -262,14 +262,14 @@ if defined BACKUP_PLUS (
   set "OFFSET_SIGN=-"
 ) else (
   set "INPUT=%BACKUP_INPUT%"
-  call :parse_hh_mm "%INPUT%"
+  call :parse_hh_mm "!INPUT!"
   if errorlevel 1 (
     echo ERROR: Invalid backup value "%BACKUP_INPUT%".
     exit /b 1
   )
-  call :format_two "%PARSE_H%" OUT_H
-  call :format_two "%PARSE_M%" OUT_M
-  set "NEW_BACKUP=%OUT_H%:%OUT_M%"
+  call :format_two "!PARSE_H!" OUT_H
+  call :format_two "!PARSE_M!" OUT_M
+  set "NEW_BACKUP=!OUT_H!:!OUT_M!"
   exit /b 0
 )
 
@@ -306,14 +306,14 @@ if defined MAINT_PLUS (
   set "OFFSET_SIGN=-"
 ) else (
   set "INPUT=%MAINT_INPUT%"
-  call :parse_d_hh_mm "%INPUT%"
+  call :parse_d_hh_mm "!INPUT!"
   if errorlevel 1 (
     echo ERROR: Invalid maintenance value "%MAINT_INPUT%".
     exit /b 1
   )
-  call :format_two "%PARSE_H%" OUT_H
-  call :format_two "%PARSE_M%" OUT_M
-  set "NEW_MAINT=%PARSE_D%:%OUT_H%:%OUT_M%"
+  call :format_two "!PARSE_H!" OUT_H
+  call :format_two "!PARSE_M!" OUT_M
+  set "NEW_MAINT=!PARSE_D!:!OUT_H!:!OUT_M!"
   exit /b 0
 )
 
