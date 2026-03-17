@@ -546,7 +546,10 @@ if not defined D exit /b 1
 if not defined H exit /b 1
 if not defined M exit /b 1
 if defined EXTRA exit /b 1
-if not "%D:~1,1%"=="" exit /b 1
+if not "%D:~1,1%"=="" (
+  if not "%D:~2,1%"=="" exit /b 1
+  if not "%D:~0,1%"=="0" exit /b 1
+)
 if "%H:~1,1%"=="" exit /b 1
 if not "%H:~2,1%"=="" exit /b 1
 if "%M:~1,1%"=="" exit /b 1
